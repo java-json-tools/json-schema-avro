@@ -24,4 +24,5 @@ import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 public final class UnsupportedJsonSchemaException
     extends ProcessingException
 {
+    private static final long serialVersionUID = -4913037914523960446L;
 }

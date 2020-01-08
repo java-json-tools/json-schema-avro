@@ -24,6 +24,7 @@ import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 public final class IllegalAvroSchemaException
     extends ProcessingException
 {
+    private static final long serialVersionUID = 2922864168105819839L;
     private static final String ILLEGAL = "illegal Avro schema";
 
     public IllegalAvroSchemaException(final Throwable e)
