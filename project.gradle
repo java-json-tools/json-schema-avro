@@ -20,7 +20,7 @@
  * Project-specific settings. Unfortunately we cannot put the name in there!
  */
 group = "com.github.java-json-tools";
-version = "0.1.7-SNAPSHOT";
+version = "0.1.7";
 sourceCompatibility = JavaVersion.VERSION_1_7;
 targetCompatibility = JavaVersion.VERSION_1_7; // defaults to sourceCompatibility
 
@@ -41,6 +41,7 @@ dependencies {
         exclude(group: "org.apache.commons", module: "commons-compress");
         exclude(group: "com.thoughtworks.paranamer", module: "paranamer");
         exclude(group: "org.xerial.snappy", module: "snappy-java");
+        exclude(group: "com.fasterxml.jackson.core", module: "jackson-core");
     }
     compile(group: "com.fasterxml.jackson.core", name: "jackson-databind",
         version: "2.10.2");
