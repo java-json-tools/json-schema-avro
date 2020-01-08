@@ -36,12 +36,14 @@ dependencies {
         version: "1.2.12");
     compile(group: "com.github.java-json-tools", name: "json-schema-validator",
         version: "2.2.12");
-    compile(group: "org.apache.avro", name: "avro", version: "1.7.6") {
+    compile(group: "org.apache.avro", name: "avro", version: "1.9.1") {
         exclude(group: "org.slf4j", module: "slf4j-api");
         exclude(group: "org.apache.commons", module: "commons-compress");
         exclude(group: "com.thoughtworks.paranamer", module: "paranamer");
         exclude(group: "org.xerial.snappy", module: "snappy-java");
     }
+    compile(group: "com.fasterxml.jackson.core", name: "jackson-databind",
+        version: "2.9.9");
     testCompile(group: "org.testng", name: "testng", version: "6.8.7") {
         exclude(group: "junit", module: "junit");
         exclude(group: "org.beanshell", module: "bsh");
