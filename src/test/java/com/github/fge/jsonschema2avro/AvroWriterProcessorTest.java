@@ -24,6 +24,7 @@ import com.github.fge.jsonschema.core.exceptions.ProcessingException;
 import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.core.tree.CanonicalSchemaTree;
 import com.github.fge.jsonschema.core.tree.SchemaTree;
+import com.github.fge.jsonschema.core.tree.key.SchemaKey;
 import com.github.fge.jsonschema.core.util.ValueHolder;
 import com.google.common.collect.Lists;
 import org.apache.avro.Schema;
@@ -78,7 +79,7 @@ public abstract class AvroWriterProcessorTest
         final JsonNode avro)
         throws ProcessingException
     {
-        final SchemaTree tree = new CanonicalSchemaTree(schema);
+        final SchemaTree tree = new CanonicalSchemaTree(SchemaKey.anonymousKey(), schema);
         final ValueHolder<SchemaTree> input = ValueHolder.hold("schema", tree);
         final Schema expected = new Schema.Parser().parse(avro.toString());
 

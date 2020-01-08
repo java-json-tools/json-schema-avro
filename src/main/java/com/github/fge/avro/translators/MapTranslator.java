@@ -51,7 +51,7 @@ final class MapTranslator
         final ObjectNode subSchema = FACTORY.objectNode();
         final Schema valuesSchema = avroSchema.getValueType();
 
-        jsonSchema.getCurrentNode().put("additionalProperties", subSchema);
+        jsonSchema.getCurrentNode().set("additionalProperties", subSchema);
 
         jsonSchema.setPointer(pwd.append("additionalProperties"));
         AvroTranslators.getTranslator(valuesSchema.getType())

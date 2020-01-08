@@ -22,9 +22,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.fge.jsonschema.core.exceptions.ProcessingException;
+import com.github.fge.jsonschema.core.ref.JsonRef;
 import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.core.tree.CanonicalSchemaTree;
 import com.github.fge.jsonschema.core.tree.SchemaTree;
+import com.github.fge.jsonschema.core.tree.key.SchemaKey;
 import com.github.fge.jsonschema.core.util.ValueHolder;
 import com.github.fge.jsonschema2avro.AvroWriterProcessor;
 import com.google.common.collect.Lists;
@@ -53,17 +55,19 @@ public final class TypeUnionWriter
     {
         // In such a union, there cannot be embedded unions so we need not care
         // here
+        final JsonRef context = tree.getContext();
         final JsonNode node = tree.getNode();
         final List<Schema> schemas = Lists.newArrayList();
 
-        for (final ValueHolder<SchemaTree> holder: expand(node))
+        for (final ValueHolder<SchemaTree> holder: expand(context, node))
             schemas.add(writer.process(report, holder).getValue());
 
         return Schema.createUnion(schemas);
     }
 
-    private static List<ValueHolder<SchemaTree>> expand(final JsonNode node)
+    private static List<ValueHolder<SchemaTree>> expand(final JsonRef context, final JsonNode node)
     {
+        final SchemaKey key = SchemaKey.forJsonRef(context);
         final ObjectNode common = node.deepCopy();
         final ArrayNode typeNode = (ArrayNode) common.remove("type");
 
@@ -74,8 +78,8 @@ public final class TypeUnionWriter
 
         for (final JsonNode element: typeNode) {
             schema = common.deepCopy();
-            schema.put("type", element);
-            tree = new CanonicalSchemaTree(schema);
+            schema.set("type", element);
+            tree = new CanonicalSchemaTree(key, schema);
             ret.add(ValueHolder.hold("schema", tree));
         }
 

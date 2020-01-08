@@ -48,7 +48,7 @@ final class UnionTranslator
     {
         final JsonPointer pwd = jsonSchema.getPointer();
         final ArrayNode schemas = FACTORY.arrayNode();
-        jsonSchema.getCurrentNode().put("oneOf", schemas);
+        jsonSchema.getCurrentNode().set("oneOf", schemas);
 
         Schema schema;
         Schema.Type type;

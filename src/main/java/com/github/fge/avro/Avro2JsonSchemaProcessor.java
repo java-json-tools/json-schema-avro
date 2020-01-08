@@ -26,6 +26,7 @@ import com.github.fge.jsonschema.core.report.ProcessingReport;
 import com.github.fge.jsonschema.core.tree.CanonicalSchemaTree;
 import com.github.fge.jsonschema.core.tree.JsonTree;
 import com.github.fge.jsonschema.core.tree.SchemaTree;
+import com.github.fge.jsonschema.core.tree.key.SchemaKey;
 import org.apache.avro.AvroRuntimeException;
 import org.apache.avro.Schema;
 
@@ -65,6 +66,6 @@ public final class Avro2JsonSchemaProcessor
         AvroTranslators.getTranslator(avroType)
             .translate(avroSchema, tree, report);
 
-        return new CanonicalSchemaTree(tree.getBaseNode());
+        return new CanonicalSchemaTree(SchemaKey.anonymousKey(), tree.getBaseNode());
     }
 }

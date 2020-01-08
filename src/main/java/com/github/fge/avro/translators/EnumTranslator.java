@@ -48,6 +48,6 @@ final class EnumTranslator
         final ArrayNode enumValues = FACTORY.arrayNode();
         for (final String symbol: avroSchema.getEnumSymbols())
             enumValues.add(symbol);
-        jsonSchema.getCurrentNode().put("enum", enumValues);
+        jsonSchema.getCurrentNode().set("enum", enumValues);
     }
 }

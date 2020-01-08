@@ -32,6 +32,8 @@ project.ext {
  * List of dependencies
  */
 dependencies {
+    compile(group: "com.github.java-json-tools", name: "json-schema-core",
+        version: "1.2.12");
     compile(group: "com.github.java-json-tools", name: "json-schema-validator",
         version: "2.2.12");
     compile(group: "org.apache.avro", name: "avro", version: "1.7.6") {
@@ -61,5 +63,6 @@ javadoc.options {
     links("https://fasterxml.github.com/jackson-annotations/javadoc/2.9/");
     links("https://www.javadoc.io/doc/com.google.guava/guava/28.1-android/");
     links("https://java-json-tools.github.io/msg-simple/");
+    links("https://java-json-tools.github.io/json-schema-core/1.2.x/");
     links("https://java-json-tools.github.io/json-schema-validator/2.2.x/");
 }

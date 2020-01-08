@@ -60,7 +60,7 @@ final class RecordTranslator
         if (fields.isEmpty()) {
             final ArrayNode node = FACTORY.arrayNode();
             node.add(FACTORY.objectNode());
-            jsonSchema.getCurrentNode().put("enum", node);
+            jsonSchema.getCurrentNode().set("enum", node);
             return;
         }
 
@@ -72,12 +72,12 @@ final class RecordTranslator
         jsonSchema.setType(NodeType.OBJECT);
 
         final ArrayNode required = FACTORY.arrayNode();
-        jsonSchema.getCurrentNode().put("required", required);
+        jsonSchema.getCurrentNode().set("required", required);
 
         jsonSchema.getCurrentNode().put("additionalProperties", false);
 
         final ObjectNode properties = FACTORY.objectNode();
-        jsonSchema.getCurrentNode().put("properties", properties);
+        jsonSchema.getCurrentNode().set("properties", properties);
 
         String fieldName;
         Schema fieldSchema;
@@ -98,7 +98,7 @@ final class RecordTranslator
             required.add(fieldName);
             ptr = JsonPointer.of("properties", fieldName);
             propertyNode = FACTORY.objectNode();
-            properties.put(fieldName, propertyNode);
+            properties.set(fieldName, propertyNode);
             injectDefault(propertyNode, field);
             jsonSchema.setPointer(pwd.append(ptr));
             translator.translate(fieldSchema, jsonSchema, report);
@@ -119,7 +119,7 @@ final class RecordTranslator
          */
         try {
             final String s = OLD_MAPPER.writeValueAsString(value);
-            propertyNode.put("default", JsonLoader.fromString(s));
+            propertyNode.set("default", JsonLoader.fromString(s));
         } catch (IOException ignored) {
             // cannot happen
         }

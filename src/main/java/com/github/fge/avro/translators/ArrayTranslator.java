@@ -51,7 +51,7 @@ final class ArrayTranslator
         final ObjectNode subSchema = FACTORY.objectNode();
         final Schema valuesSchema = avroSchema.getElementType();
 
-        jsonSchema.getCurrentNode().put("items", subSchema);
+        jsonSchema.getCurrentNode().set("items", subSchema);
 
         jsonSchema.setPointer(pwd.append("items"));
         AvroTranslators.getTranslator(valuesSchema.getType())

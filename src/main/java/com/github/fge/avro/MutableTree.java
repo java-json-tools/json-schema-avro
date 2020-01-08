@@ -72,14 +72,14 @@ public final class MutableTree
 
         if (!baseNode.has("definitions")) {
             ret = false;
-            baseNode.put("definitions", FACTORY.objectNode());
+            baseNode.set("definitions", FACTORY.objectNode());
         }
 
         final ObjectNode definitions = (ObjectNode) baseNode.get("definitions");
 
         if (!definitions.has(name)) {
             ret = false;
-            definitions.put(name, FACTORY.objectNode());
+            definitions.set(name, FACTORY.objectNode());
         }
 
         return ret;
