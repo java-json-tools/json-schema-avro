@@ -85,7 +85,6 @@ final class RecordTranslator
         AvroTranslator translator;
         JsonPointer ptr;
         ObjectNode propertyNode;
-        String s;
 
         /*
          * FIXME: "default" and readers'/writers' schema? Here, even with a

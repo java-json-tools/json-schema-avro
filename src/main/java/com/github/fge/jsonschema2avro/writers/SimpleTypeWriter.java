@@ -26,12 +26,10 @@ import com.github.fge.jsonschema2avro.AvroWriterProcessor;
 import com.google.common.collect.ImmutableMap;
 import org.apache.avro.Schema;
 
-import java.util.Map;
-
 public final class SimpleTypeWriter
     extends AvroWriter
 {
-    private static final Map<NodeType, Schema.Type> TYPEMAP
+    private static final ImmutableMap<NodeType, Schema.Type> TYPEMAP
         = ImmutableMap.<NodeType, Schema.Type>builder()
             .put(NodeType.BOOLEAN, Schema.Type.BOOLEAN)
             .put(NodeType.NULL, Schema.Type.NULL)
