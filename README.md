@@ -81,7 +81,7 @@ Versions before 0.1.5 are available at `groupId` `com.github.fge`.
 [LGPLv3]: http://www.gnu.org/licenses/lgpl-3.0.html
 [ASL 2.0 badge]: https://img.shields.io/:license-Apache%202.0-blue.svg
 [ASL 2.0]: http://www.apache.org/licenses/LICENSE-2.0.html
-[Travis Badge]: https://api.travis-ci.org/java-json-tools/json-schema-avro.svg?branch=master
-[Travis]: https://travis-ci.org/java-json-tools/json-schema-avro
+[Travis Badge]: https://travis-ci.com/java-json-tools/json-schema-avro.svg?branch=master
+[Travis]: https://travis-ci.com/java-json-tools/json-schema-avro
 [Maven Central badge]: https://img.shields.io/maven-central/v/com.github.java-json-tools/json-schema-avro.svg
 [Maven]: https://search.maven.org/artifact/com.github.java-json-tools/json-schema-avro
